@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lesson3/main1/utils/string_extension.dart';
+import 'package:lesson3/main2/widgets/cont_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,12 +31,15 @@ class HomePage extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.favorite_border),
-            style: IconButton.styleFrom(
-              side: BorderSide(
-                color: Colors.grey.shade300,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.favorite_border),
+              style: IconButton.styleFrom(
+                side: BorderSide(
+                  color: Colors.grey.shade300,
+                ),
               ),
             ),
           ),
@@ -72,23 +76,46 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      border: Border.all(color: Colors.grey.shade400),
-                      color: Colors.white,
-                    ),
-                  ),
-
-                ],
-              )
-
+              ContainerWidget(number: '24', type: 'Chapter'),
+              ContainerWidget(number: '12', type: 'Exam'),
+              ContainerWidget(number: '05', type: 'Rewards'),
             ],
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 25, top: 40),
+            child: Text(
+              'About course',
+              style: TextStyle(
+                  color: Color.fromARGB(255, 48, 4, 153),
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 25),
+            child: Text(
+                'English courses help students develop their English language skills, including speaking, listening, reading, and writing. They can also help students improve their grammar, vocabulary, pronunciation, and sentence structure.'),
           )
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: const Color.fromARGB(255, 48, 4, 153),
+        items: const [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.white,
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_rounded),
+            label: 'Profile',
+          ),
         ],
       ),
     );
